@@ -67,13 +67,13 @@ public class HomeController {
 	        return "redirect:/home";
 	    }
 	    
-	    @GetMapping("home/like/{id}")
+	    @GetMapping("/like/{id}")
 	    public String atualizarLikeFilme(@PathVariable int id) {
 	        filmeDAO.atualizarLike(id);
 	        return "redirect:/home";
 	    }
 
-	    @GetMapping("home/deslike/{id}")
+	    @GetMapping("/deslike/{id}")
 	    public String atualizarDeslikeFilme(@PathVariable int id) {
 	        filmeDAO.atualizarDeslike(id);
 	        return "redirect:/home";
@@ -85,7 +85,7 @@ public class HomeController {
 	    @GetMapping("/editar-noticia/{id}")
 	    public String editarNoticia(@PathVariable int id, Model model) {
 	        Noticia noticia = noticiaDAO.buscarPorId(id);
-	        model.addAttribute("filme", noticia);
+	        model.addAttribute("noticia", noticia);
 	        return "editar_noticia";
 	    }
 

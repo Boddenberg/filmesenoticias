@@ -57,7 +57,7 @@
     </thead>
     <tbody>
     <tr th:each="noticia : ${noticias}">
-        <td th:text="${noticia.imagem}"></td>
+        <td><img width="100px" height="70px" th:src="${noticia.imagem}"/></td>
         <td th:text="${noticia.id}"></td>
         <td th:text="${noticia.titulo}"></td>
         <td th:text="${noticia.descricao}"></td>
