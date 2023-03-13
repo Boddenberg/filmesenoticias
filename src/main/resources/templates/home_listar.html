@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Filminhos e Noticinhas</title>
+</head>
+<body>
+<h1>Filminhos</h1>
+<table>
+    <thead>
+    <tr>
+    	<th>Imagem</th>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Duração</th>
+        <th>Sinopse</th>
+        <th>IMDB</th>
+        <th>Like</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="filme : ${filmes}">
+        <td><img width="100px" height="70px" th:src="${filme.imagem}"/></td>
+        <td th:text="${filme.id}"></td>
+        <td th:text="${filme.titulo}"></td>
+        <td th:text="${filme.duracao}"></td>
+        <td th:text="${filme.sinopse}"></td>
+        <td th:text="${filme.imdb}"></td>
+        <td th:text="${filme.like}"></td>
+		<td><a th:href="@{/home/like/{id}(id=${filme.id})}">Like</a></td>
+        <td><a th:href="@{/home/deslike/{id}(id=${filme.id})}">Deslike</a></td> 
+        <td><a th:href="@{/home/editar-filme/{id}(id=${filme.id})}">Editar</a></td>
+        <td><a th:href="@{/home/remover-filme/{id}(id=${filme.id})}" onclick="return confirm('Tem certeza que deseja excluir este filme?')">Excluir</a></td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/home/novo-filme}">Adicionar novo filme</a>
+
+<br>
+<br>
+
+<h1>Noticinhas</h1>
+<table>
+    <thead>
+    <tr>
+    	<th>Imagem</th>
+        <th>ID</th>
+        <th>Titulo</th>
+        <th>Descrição</th>
+        <th>Autor</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="noticia : ${noticias}">
+        <td th:text="${noticia.imagem}"></td>
+        <td th:text="${noticia.id}"></td>
+        <td th:text="${noticia.titulo}"></td>
+        <td th:text="${noticia.descricao}"></td>
+        <td th:text="${noticia.autor}"></td>
+        
+        <td><a th:href="@{/home/editar-noticia/{id}(id=${noticia.id})}">Editar</a></td>
+        <td><a th:href="@{/home/remover-noticia/{id}(id=${noticia.id})}" onclick="return confirm('Tem certeza que deseja excluir esta notícia?')">Excluir</a></td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/home/novo-noticia}">Adicionar nova notícia</a>
+</body>
+</html>
